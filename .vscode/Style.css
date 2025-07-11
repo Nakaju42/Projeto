@@ -10,7 +10,7 @@
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
-  --switch-bg-url: url(./assets/moon-stars.svg) 
+  --switch-bg-url: url(./assets/moon-stars.svg);
 }
 
 .light {
@@ -19,11 +19,12 @@
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --highlight-color: rgba(0, 0, 0, 0.1);
-  --switch-bg-url: url(./assets/sun.svg) 
+  --switch-bg-url: url(./assets/sun.svg);
 }
 
 body {
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 
 body * {
@@ -36,8 +37,10 @@ body * {
   max-width: 588px;
   margin: 56px auto 0px;
   padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
 
 /* profile */
 #profile {
@@ -55,31 +58,28 @@ body * {
   margin-top: 8px;
 }
 
-
 /*switch*/
-#switch{
-  
+#switch {
   position: relative; /*será relativo ao absoluto*/
   width: 64px;
   margin: 4px auto; /*tem que alinhar desse jeito porque é display block*/
-  
 }
 #switch button {
   width: 32px;
   height: 32px;
-  background:white var(--switch-bg-url)no-repeat center;
+  background: white var(--switch-bg-url) no-repeat center;
   border: 0;
   border-radius: 50%;
 
-  position:absolute; /*estratégia de alinhar posicionamentos absolutos. Nesse caso, está alinhando na vertical*/
+  position: absolute; /*estratégia de alinhar posicionamentos absolutos. Nesse caso, está alinhando na vertical*/
   top: 50%;
-  left:0;
-  z-index:1; /*para deixar dentro*/
+  left: 0;
+  z-index: 1; /*para deixar dentro*/
   transform: translateY(-50%);
 }
 
 .light #switch button {
-  right:0;
+  right: 0;
   left: initial;
 }
 
@@ -98,6 +98,7 @@ ul {
   list-style: none;
   display: flex;
   flex-direction: column;
+
   gap: 16px;
 
   padding: 24px 0;
@@ -108,9 +109,11 @@ ul li a {
   justify-content: center;
   height: 24px;
   align-items: center; /*desse modo porque é flex*/
+
   padding: 16px 24px;
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
+
   width: 312px;
   border-radius: 8px;
   backdrop-filter: blur(4px);
@@ -143,10 +146,19 @@ ul li a:hover {
 
 #social-links a:hover {
   background: var(--highlight-color);
-
-footer {
-  padding: 24px 0;
-  text-align: center;
-  font-size: 14px;
-  height: 50px;
+  footer {
+    padding: 24px 0;
+    text-align: center;
+    font-size: 14px;
+    height: 50px;
+  }
+}
+/* media queries */
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
 }
